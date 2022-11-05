@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('FarmFresh')">
+    <meta charset="UTF-8"/>
+    <title>Sign Up</title>
+</head>
+<body>
+<div th:replace="layout :: nav"></div>
+<form align="center" action="/user/adduser" method="post" th:object="${user}">
+    <table align="center">
+        <tr><td>Enter Name:</td><td><input type="text" th:field="*{name}" required="true" autofocus="true"/></td></tr>
+        <tr><td>Enter Email:</td><td><input type="email" th:field="*{email}" required="true"/></td></tr>
+        <tr><td>Enter Password:</td><td><input type="password" th:field="*{password}" required="true"/></td></tr>
+        <tr><td>Enter Mobile No:</td><td><input type="text" th:field="*{mobileNumber}" required="true"/></td></tr>
+        <tr><td>Enter Address:</td><td><textarea rows="4" cols="40" th:field="*{address}" required="true"></textarea></td></tr>
+    <tr><td></td><td><input type="submit" value="Sign Up"/></td></tr>
+    </table>
+</form>
+</body>
+</html>
+

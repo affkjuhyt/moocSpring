@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin profile</title>
+</head>
+<body>
+<h2 align="center">List of Items</h2>
+<table align="center" border="2">
+    <tr>
+        <td align="center">Item id</td>
+        <td align="center">Name</td>
+        <td align="center">Price</td>
+        <td align="center">Quantity.</td>
+        <td align="center">Update</td>
+        <td align="center">Delete</td>
+    </tr>
+    <tr th:each="Item: ${listOfItems}">
+        <td th:text="${Item.id}"></td>
+        <td th:text="${Item.name}"></td>
+        <td th:text="${Item.price}"></td>
+        <td th:text="${Item.quantity}"></td>
+        <td><form th:action="'/updatePage/'+${Item.id}"><input type="submit" name="Update" value="Update" /></form></td>
+        <td><form th:action="'/deleteItem/'+${Item.id}"><input type="submit" name="Delete" value="Delete" /></form></td>
+    </tr>
+</table>
+<br/>
+<p th:text="${deleteSuccess}" align="center"></p>
+<br/>
+<a th:href="@{/newItem}">Add new Item</a>
+<br/>
+<p th:text="${addSuccess}" align="center"></p>
+<br/>
+<p th:text="${updateSuccess}" align="center"></p>
+</body>
+</html>

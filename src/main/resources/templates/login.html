@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Login')"></head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+
+<body>
+<div th:replace="layout :: nav"></div>
+    <form align="center" method="post" action="/user/userlogin" th:object="${user}">
+        <table align="center">
+            <tr>
+                <td>Enter Email:</td><td><input type="email" th:field="*{email}" required="true" autofocus="true"/></td></tr>
+           <tr><td> Enter Password:</td><td><input type="password" th:field="*{password}" required="true"/></td></tr>
+            <tr><td></td><td><input type="submit" value="Login"/></td></tr>
+        </table>
+    </form>
+    <p align="center" th:text="${passwordcheck}"></p>
+    <p align="center" th:text="${emailcheck}"></p><br/>
+</body>
+</html>

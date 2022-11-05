@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Order')"></head>
+<body>
+
+<div th:replace="layout :: nav"></div>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-lg-9">
+            <div th:each="item : ${session.cart}">
+
+                <div class="col-lg-6">
+                    <p th:text="${item.name}"></p>
+
+                    <p th:text="${item.price}"></p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <h6 th:text="${session.price}"></h6>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <form method="post" action="/orders/submit" th:object="${order}">
+                <input type="submit" value="Place Order"/>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

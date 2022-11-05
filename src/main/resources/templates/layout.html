@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(page_title)">
+    <meta charset="UTF-8"/>
+    <title th:text="${page_title}">FarmFresh</title>
+    <link rel="stylesheet" th:href="@{/bootstrap.css}"/>
+    <link rel="icon" th:href="@{/favicon.PNG}"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+</head>
+<body>
+<div th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <img th:src="@{./favicon.PNG}" alt="FarmFresh Logo" width="200" height="80"/>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="http://localhost:8080/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/categories/list}">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/viewCart}">View Cart</a>
+                        </li>
+                        <li class="nav-item">
+
+                            <div th:if="!${user}">
+
+
+                                <div th:if="!${sessionuser}">
+                                    <div th:if="!${update}">
+                                        <div th:if="!${userProfile}">
+                                            <div th:if="!${userLogin}">
+                                    <a class="nav-link" th:href="@{/user/signup}">Sign up</a><br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </li>
+                        <li class="nav-item">
+
+                            <div th:if="!${sessionuser}">
+
+                                <div th:if="!${user}">
+                                    <div th:if="!${userProfile}">
+                                        <div th:if="!${userLogin}">
+                                    <a class="nav-link" th:href="@{/user/login}">Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </li>
+                        <li class="nav-item">
+                            <div th:if="!${userLogin}">
+                            <div th:if="${user}">
+                                <div th:if="!${userSignup}">
+
+                                <a class="nav-link" href=""><form method="post" action="/user/profile" th:object="${user}">
+                                    <input type="hidden" name="email" th:field="*{email}"/>
+                                    <input type="submit" value="My Account" />
+                                </form></a>
+                                </div>
+                            </div>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div th:if="!${userLogin}">
+                            <div th:if="${sessionuser}">
+                                <div th:if="${userLogin}">
+                                <a class="nav-link" href=""><form method="post" action="/user/profile" th:object="${sessionuser}">
+                                    <input type="hidden" name="email" th:field="*{email}"/>
+                                    <input type="submit" value="My Account" />
+                                </form></a>
+                                </div>
+                            </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

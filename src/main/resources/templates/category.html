@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Categories')"></head>
+<body>
+<div th:replace="layout :: nav"></div>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+                <h3 th:text="${fruits.catName}"></h3>
+                <div th:object="${fruits}">
+                    <div class="row">
+                    <div th:each="item : ${fruits.itemList}">
+                        <div class="col-lg-4">
+                            <p th:text="${item.name}"></p>
+                            <p th:text="${item.price}"></p>
+                            <p th:text="${item.quantity}"></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        <div class="col-lg-6">
+
+            <h3 th:text="${vegetables.catName}"></h3>
+            <div th:object="${vegetables}">
+
+                <div class="row">
+                <div th:each="item : ${vegetables.itemList}">
+
+                    <div class="col-lg-4">
+                        <p th:text="${item.name}"></p>
+                        <p th:text="${item.price}"></p>
+                        <p th:text="${item.quantity}"></p>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

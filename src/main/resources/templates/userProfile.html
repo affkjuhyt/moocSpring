@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Profile')"></head>
+    <meta charset="UTF-8"/>
+    <title>Profile</title>
+
+<body>
+<div th:replace="layout :: nav"></div>
+    <div>
+    <form method="post" th:object="${userdetails}" action="/user/deleteaccount" align="center">
+        <table align="center">
+            <tr><td>Name:</td><td><input name="name" th:field="*{name}"/></td></tr>
+            <tr><td>Email:</td><td><input name="email" th:field="*{email}"/></td></tr>
+            <tr><td>Mobile Number:</td><td><input name="mobileNumber" th:field="*{mobileNumber}"/></td></tr>
+            <tr><td>Address:</td><td><input name="address" th:value="*{address}"/></td></tr>
+            <tr><td></td><td><input type="submit" value="Delete Account"/></td></tr>
+        </table>
+    </form>
+        <form method="post" align="center" action="/user/update" th:object="${userdetails}">
+            <input type="hidden" name="email" th:field="*{email}"/><br/>
+            <table align="center"><tr><td></td><td><input type="submit" value="Update"/></td></tr></table>
+        </form><br/>
+        <form method="post" align="center" action="/user/logout" th:object="${sessionuser}">
+            <table align="center"><tr><td></td><td><input type="submit" value="Logout"/></td></tr></table>
+        </form>
+    </div>
+</body>
+</html>

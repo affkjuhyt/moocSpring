@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyemleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>New item add</title>
+</head>
+<body>
+
+
+<h1 align="center">Add new Items </h1>
+
+<br/><br/>
+<h1 align="center">Enter Details of new item :</h1>
+<form method="post" action="/addItem" th:object="${newItem}">
+    <!--Item Id: <input align="center" type="number" th:field="*{id}"/><br/><br/>-->
+    Item Name: <input align="center"  type="text" th:field="*{name}"/><br/><br/>
+    Item price: <input align="center"  type="number" th:field="*{price}"/><br/><br/>
+    Item Qty.: <input align="center"  type="number" th:field="*{quantity}"/><br/><br/>
+    <input align="center"  type="submit" value="Add Item "/><br/><br/>
+</form>
+</body>
+</html>

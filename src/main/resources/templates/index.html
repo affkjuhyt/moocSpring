@@ -1,0 +1,35 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('FarmFresh')">
+    <link rel="stylesheet" th:href="@{/bootstrap.css}"/>
+
+</head>
+<body>
+<div th:replace="layout :: nav"></div>
+<table>
+<div class="container-fluid">
+    <div class="row">
+        <div th:each="item : ${listOfItems}">
+            <div class="col-lg-6">
+                <img th:src="@{'/fruits/'+${item.name}+'.jpg'}" alt="item-image" width="150" height="150"/>
+                <p th:text="${item.name}"></p>
+                <p th:text="${item.price}"></p>
+                <a th:href="'/viewCart/'+${item.id}">Add to Cart</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div>
+<p th:text="${signedUp}" align="center"></p>
+</div>
+<!--<div>-->
+<!--<p th:text="${loggedIn}" align="center"></p>-->
+ <!--</div>-->
+<div>
+    <p th:text="${deletion}" align="center"></p>
+</div>
+</table>
+</body>
+</html>

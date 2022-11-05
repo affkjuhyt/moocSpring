@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Your Shopping Cart')"></head>
+
+<body>
+<div th:replace="layout :: nav"></div>
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div th:each="item : ${session.cart}">
+
+            <div class="col-lg-6">
+                <p th:text="${item.name}"></p>
+
+                <p th:text="${item.price}"></p>
+
+                <a th:href="@{'/removeItem/'+${item.id}}">Remove</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-lg-4"><p>Total Price : </p><p th:text="${session.price}"></p></div>
+
+        <div class="col-lg-4"><a th:href="@{/orders}">Make Payment</a></div>
+
+        <div class="col-lg-4"><a th:href="@{/}">Continue Shopping</a></div>
+
+    </div>
+
+
+    <div class="row">
+
+        <h4 th:text="${orderFailedMessage}"></h4>
+
+    </div>
+
+</div>
+</body>
+</html>
